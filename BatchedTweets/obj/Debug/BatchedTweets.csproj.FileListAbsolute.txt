@@ -1,0 +1,9 @@
+C:\devprivate\BatchedTweets\BatchedTweets\bin\BatchedTweets.dll
+C:\devprivate\BatchedTweets\BatchedTweets\bin\BatchedTweets.pdb
+C:\devprivate\BatchedTweets\BatchedTweets\bin\EntityFramework.dll
+C:\devprivate\BatchedTweets\BatchedTweets\bin\Hammock.ClientProfile.dll
+C:\devprivate\BatchedTweets\BatchedTweets\bin\EntityFramework.xml
+C:\devprivate\BatchedTweets\BatchedTweets\bin\Hammock.ClientProfile.pdb
+C:\devprivate\BatchedTweets\BatchedTweets\obj\Debug\ResolveAssemblyReference.cache
+C:\devprivate\BatchedTweets\BatchedTweets\obj\Debug\BatchedTweets.dll
+C:\devprivate\BatchedTweets\BatchedTweets\obj\Debug\BatchedTweets.pdb

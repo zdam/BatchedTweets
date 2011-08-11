@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_BareLayout.cshtml";
+}
+<h2 id="message">Latest Tweets</h2>
+<div id="btnHolder"></div>
+<div id="tblHolder"></div>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+    //debugger;
+    var w = screen.width;
+    var h = screen.height - 400;
+
+    var requiredWidth = 300;
+    var requiredHeight = 100;
+
+    var numrows = Math.floor(h / requiredHeight);
+    var numcols = Math.floor(w / requiredWidth);
+
+    
+    var act = "@(Url.Action("TweetsGet", "Home"));";
+
+    var req = $.ajax({
+        url: act,
+        dataType: 'json',
+        cache: false                
+    });
+
+    req.success(function(response) {
+        //debugger;
+        
+        var arr = JSON.parse(response);
+        
+        if(!$.isArray(arr)) {
+            $("#message").text("Get back to work! Don't come back for " + arr + " minutes");
+            arr = [];
+        }
+        buildPageButtons(arr, numrows, numcols);
+        applyTweetData(arr, 0, numrows, numcols);            
+            
+    });
+
+    $('.tweetCell').live('click', function() {
+        var url = $(this).attr('data-url');
+        window.open(url, 'twitter', null);
+    });
+});
+
+function buildPageButtons(arr, numrows, numcols) {
+    var maxScreenTweets = numrows * numcols;
+    var totalButtons = Math.ceil(arr.length / maxScreenTweets);
+
+    $('#btnHolder').empty();
+    
+    
+    for(var i=0; i < totalButtons; i++) {
+        var btn = $('<button class="pageButton" type="button" value=Page"'+ i +'" data-index="'+ i*maxScreenTweets +'">Page'+ i +'</button>');        
+        $('#btnHolder').append(btn);
+    }
+
+    $('.pageButton').click(function () {
+        var index = $(this).attr('data-index');
+        applyTweetData(arr, index, numrows, numcols);
+    });
+}
+
+function applyTweetData(arr, arrIndex, numrows, numcols) {
+    
+    var tbl = $("<table border='1'></table>");
+
+    var tweetCount = arrIndex;
+    
+    for(var i = 0; i < numrows; i++){
+ 
+        var row = $("<tr style='width:1920'></tr>");
+    
+        for(var j = 0; j < numcols; j++){
+            //debugger;
+            var theId = tweetCount < arr.length ? arr[tweetCount].id_str : "";
+            var theText = tweetCount < arr.length ? arr[tweetCount].text : "";
+            var theUser = tweetCount < arr.length ? arr[tweetCount].user.name : "";
+            var theScreen = tweetCount < arr.length ? arr[tweetCount].user.screen_name : "";
+
+            var tweet = '<div>'+theScreen+'</div><div>'+theText+'</div>';
+            var tweetUrl = ''; 
+            if(theId.length > 0) {
+                tweetUrl = 'http://twitter.com/'+theScreen+'/status/'+theId;
+            }
+            
+            row.append("<td class='tweetCell' style='width:300px;height:100px;' data-url='"+tweetUrl+"'>" + tweet + "</td>");
+            tweetCount++;
+        } 
+        tbl.append(row);
+    }
+
+    $('#tblHolder').empty();
+    $('#tblHolder').append(tbl);    
+}
+
+</script>
