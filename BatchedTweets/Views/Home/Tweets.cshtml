@@ -20,7 +20,7 @@ $(document).ready(function () {
     var numcols = Math.floor(w / requiredWidth);
 
     
-    var act = "@(Url.Action("TweetsGet", "Home"));";
+    var act = "@(Url.Action("TweetsGet", "Home"))";
 
     var req = $.ajax({
         url: act,
