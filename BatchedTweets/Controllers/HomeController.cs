@@ -72,7 +72,7 @@ namespace BatchedTweets.Controllers
             }
 
             var lastHitDate = Convert.ToDateTime(lastHit);
-            return 3 - Convert.ToInt32(DateTime.Now.Subtract(lastHitDate).TotalMinutes);
+            return 30 - Convert.ToInt32(DateTime.Now.Subtract(lastHitDate).TotalMinutes);
         }
     }
 }
