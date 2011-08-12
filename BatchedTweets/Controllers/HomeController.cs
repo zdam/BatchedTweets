@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -40,8 +41,8 @@ namespace BatchedTweets.Controllers
         {
             BasicAuthCredentials credentials = new BasicAuthCredentials
                                                    {
-                                                       Username = "zdam",
-                                                       Password = "sambooka"
+                                                       Username = ConfigurationManager.AppSettings["ScreenName"],
+                                                       Password = ConfigurationManager.AppSettings["SuperTweetPassword"]
                                                    };
             RestClient client = new RestClient
                                     {
