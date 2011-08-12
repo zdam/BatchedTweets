@@ -18,6 +18,12 @@ namespace BatchedTweets.Controllers
             return View();
         }
 
+        public ActionResult Diagnostics()
+        {
+            ViewBag.Delay = WebConfigurationManager.AppSettings["DelayInMinutes"];
+            return View();
+        }
+
         public JsonResult TweetsGet()
         {
             var timeRemaining = TimeUntilMoreTweetsAreAllowed();
