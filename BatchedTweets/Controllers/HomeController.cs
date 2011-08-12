@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Hammock;
@@ -41,8 +42,8 @@ namespace BatchedTweets.Controllers
         {
             BasicAuthCredentials credentials = new BasicAuthCredentials
                                                    {
-                                                       Username = ConfigurationManager.AppSettings["ScreenName"],
-                                                       Password = ConfigurationManager.AppSettings["SuperTweetPassword"]
+                                                       Username = WebConfigurationManager.AppSettings["ScreenName"],
+                                                       Password = WebConfigurationManager.AppSettings["SuperTweetPassword"]
                                                    };
             RestClient client = new RestClient
                                     {
@@ -73,7 +74,8 @@ namespace BatchedTweets.Controllers
             }
 
             var lastHitDate = Convert.ToDateTime(lastHit);
-            return 30 - Convert.ToInt32(DateTime.Now.Subtract(lastHitDate).TotalMinutes);
+            int delay = Convert.ToInt32(WebConfigurationManager.AppSettings["DelayInMinutes"]);
+            return delay - Convert.ToInt32(DateTime.Now.Subtract(lastHitDate).TotalMinutes);
         }
     }
 }
