@@ -1,0 +1,27 @@
+
+Batched Tweets - turns real-time Twitter into batched Twitter.
+
+
+This is a website that only lets you retrieve your tweets every 30 minutes.
+
+If you try more frequently than that, nothing is displayed.
+
+Watch your productivity soar!
+
+Tweets are displayed in a grid covering the entire screen, so you spend more time reading and less time scrolling.
+
+Simply click on a Tweet to open it in Twitter so you can perform whatever actions on it that you like.
+
+
+Currently, this leverages www.SuperTweet.net as a twitter proxy to avoid having to do the OAuth dance.
+
+You will need to set up a SuperTweet acount and ajust the web.config appSettings.
+
+Long term, this needs to be changed to support OAuth, pull requests are welcome.
+
+
+
+
+
+
+
