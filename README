@@ -1,4 +1,3 @@
-
 Batched Tweets - turns real-time Twitter into batched Twitter.
 
 
@@ -17,7 +16,7 @@ Currently, this leverages www.SuperTweet.net as a twitter proxy to avoid having 
 
 You will need to set up a SuperTweet acount and ajust the web.config appSettings.
 
-Long term, this needs to be changed to support OAuth, pull requests are welcome.
+Long term, this needs to be changed to support OAuth, pull requests are welcome..
 
 
 
